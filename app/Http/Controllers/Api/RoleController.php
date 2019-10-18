@@ -33,7 +33,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validation($request);
+        $this->_validation($request);
         $role_data = $request->only(
             [
                 'choosable',
@@ -83,7 +83,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validation($request, $id);
+        $this->_validation($request, $id);
 
         $role = Role::findOrFail($id);
 
@@ -180,13 +180,18 @@ class RoleController extends Controller
     /**
      * Validate  the given request.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request [All req params]
+     *
+     * @return void|
      */
-    private function validation(Request $request)
+    private function _validation(Request $request)
     {
-        $request->validate([
-            'title' => ['required', 'string'],
-            'description' => ['required', 'string'],
-        ]);
+        $request->validate(
+            [
+                'name' => ['required', 'string'],
+                'title' => ['required', 'string'],
+                'description' => ['required', 'string'],
+            ]
+        );
     }
 }
