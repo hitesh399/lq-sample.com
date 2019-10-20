@@ -73,8 +73,8 @@ class MyProfileController extends Controller
             $request,
             [
                 'name' => 'max:25',
-                'country' => 'int',
-                'city' => 'int',
+                // 'country' => 'int',
+                // 'city' => 'int',
                 'email' => 'email|unique:users,email,'.Auth::id(),
                 'pincode' => 'between:4, 8',
                 'date_of_birth' => 'date|date_format:Y-m-d',
@@ -82,14 +82,11 @@ class MyProfileController extends Controller
                     'regex:/^\+?([0-9]){1,4}-([0-9]){6,12}$/',
                     'unique:users,mobile_no,'.Auth::id(),
                 ],
-                'address' => 'max:100',
-                'about_me' => 'max:255',
+                // 'address' => 'max:100',
+                // 'about_me' => 'max:255',
             ],
             [
                 'mobile_no.regex' => 'The Mobile Number is not valid.',
-            ],
-            [
-                'mobile_no' => 'Mobile Number',
             ]
         );
         $now = date('Y-m-d H:i:s');
@@ -105,13 +102,13 @@ class MyProfileController extends Controller
             [
                 'name' => $request->name,
                 'email' => $new_email,
-                'date_of_birth' => $request->date_of_birth,
+                // 'date_of_birth' => $request->date_of_birth,
                 'mobile_no' => $new_number,
-                'address' => $request->address,
-                'country_id' => $request->country,
-                'city_id' => $request->city,
-                'pincode' => $request->pincode,
-                'about_me' => $request->about_me,
+                // 'address' => $request->address,
+                // 'country_id' => $request->country,
+                // 'city_id' => $request->city,
+                // 'pincode' => $request->pincode,
+                // 'about_me' => $request->about_me,
                 'email_verified_at' => $email_verified_at,
                 'mobile_no_verified_at' => $mobile_no_verified_at,
             ]
@@ -122,6 +119,21 @@ class MyProfileController extends Controller
                 'data' => $user,
             ]
         )->setMessage('Record Updated Successfully')->response();
+    }
+
+    /**
+     * To get the Profile Detail to modify purpose.
+     *
+     * @param \Illuminate\Http\Request $request Class contains all request data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        $user = \Auth::user();
+        $user->load(['profileImage']);
+
+        return $this->setData($user)->response();
     }
 
     /**

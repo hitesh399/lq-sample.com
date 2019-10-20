@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Singsys\LQ\Models\Media as BaseMedia;
 
-class Media extends Model
+class Media extends BaseMedia
 {
-     protected $fillable = [
+    protected $fillable = [
         'path',
         'type',
         'user_id',
@@ -14,6 +14,7 @@ class Media extends Model
         'info',
         'mediable_id',
         'mediable_type',
-        'created_at'
+        'created_at',
+        'driver',
     ];
 }

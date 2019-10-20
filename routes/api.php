@@ -33,22 +33,21 @@ Route::post(
     'Auth\ForgotPasswordController@newPassword'
 )->name('create-new-password');
 
-Route::get('my-profile', 'Auth\MyProfileController@index')->name('my-profile.show');
+Route::get('my-profile', 'Auth\MyProfileController@index')->name('my-profile');
+Route::get(
+    'my-profile/show', 'Auth\MyProfileController@show'
+)->name('my-profile.show');
 Route::put(
     'my-profile',
-    'MyProfile\MyProfileController@update'
+    'Auth\MyProfileController@update'
 )->name('my-profile.update');
-Route::get(
-    'my-profile/status',
-    'MyProfile\MyProfileController@myProfileStatus'
-)->name('profile-status');
 Route::put(
     'my-profile/reset-password',
-    'MyProfile\MyProfileController@resetPassword'
+    'Auth\MyProfileController@resetPassword'
 )->name('my-profile.reset-password');
 Route::post(
-    'profile-photo',
-    'MyProfile\MyProfileController@myProfilePhoto'
+    'my-profile/profile-photo',
+    'Auth\MyProfileController@myProfilePhoto'
 )->name('my-profile.update-profile-photo');
 
 Route::post('logout', 'Auth\MyProfileController@logout')->name('logout');
@@ -140,18 +139,19 @@ Route::get(
     'MyNotificationController@unRead'
 )->name('mynotification.total-unread');
 Route::put(
-    'notification/enable-disable',
+    'my-device/push-notification-enable-disable',
     'UserDeviceController@changeStatusNotification'
 )->name('mynotification.push-notification-setting');
-Route::put(
-    'notification/enable-disable/mail',
-    'UserDeviceController@changeMailNotificationStatus'
-)->name('mynotification.email-notification-setting');
 
 Route::get(
     'my-device',
     'UserDeviceController@deviceInfo'
 )->name('my-device.info');
+Route::put(
+    'my-device/token',
+    'UserDeviceController@updateDeviceToken'
+)->name('my-device.info');
+
 Route::apiResource('role', 'RoleController')->name('role', null);
 Route::apiResource('permission', 'PermissionController')->name('permission', null);
 Route::apiResource(

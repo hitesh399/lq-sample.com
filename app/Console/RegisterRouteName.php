@@ -24,8 +24,6 @@ class RegisterRouteName extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -42,20 +40,29 @@ class RegisterRouteName extends Command
         $routes = \Route::getRoutes();
         $route_names = $routes->getRoutesByName();
 
-        $group = PermissionGroup::firstOrCreate(['name'=> 'new'], ['description' => 'New']);
+        $group = PermissionGroup::firstOrCreate(
+            ['name' => 'new'], ['description' => 'New']
+        );
 
         foreach ($route_names as $name => $route) {
             $uri_arr = explode('/', $route->uri);
 
             if (count($uri_arr) === 3) {
-                $group = PermissionGroup::firstOrCreate(['name'=> title_case($uri_arr[1])], ['description' => $uri_arr[1] ]);
+                $group = PermissionGroup::firstOrCreate(
+                    [
+                        'name' => $uri_arr[1],
+                    ],
+                    ['description' => $uri_arr[1]]
+                );
             }
 
             $permission = Permission::where('name', $name)->first();
 
             if (!$permission) {
-                Permission::create(['name' => $name, 'permission_group_id' => $group->id]);
-                $this->info('Route '. $name .' has been registered.');
+                Permission::create(
+                    ['name' => $name, 'permission_group_id' => $group->id]
+                );
+                $this->info('Route '.$name.' has been registered.');
             }
         }
 

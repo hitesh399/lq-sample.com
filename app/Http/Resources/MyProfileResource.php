@@ -23,6 +23,7 @@ class MyProfileResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'role_access_type' => $this->role_access_type,
+            'profile_image' => new MediaResource($this->whenLoaded('profileImage')),
             'role' => new RoleResource($this->whenLoaded('role')),
             'roles' => RoleResource::collection($this->whenLoaded('roles')),
             'permissions' => $this->resource->permissions->toArray(),
