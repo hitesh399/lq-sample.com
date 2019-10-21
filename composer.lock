@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c28ff619414fb2e537854955c64dcad6",
+    "content-hash": "e6893ac2d13ee6b769a023604e899462",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -2355,16 +2355,16 @@
         },
         {
             "name": "singsys/laravel-quick",
-            "version": "v2.1",
+            "version": "v2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hitesh399/lq.git",
-                "reference": "5c30c3f1a0f4281d85f638f7f863b216c84c913c"
+                "reference": "0e03f452baa01019041beeceadbe607d94d558ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hitesh399/lq/zipball/5c30c3f1a0f4281d85f638f7f863b216c84c913c",
-                "reference": "5c30c3f1a0f4281d85f638f7f863b216c84c913c",
+                "url": "https://api.github.com/repos/hitesh399/lq/zipball/0e03f452baa01019041beeceadbe607d94d558ee",
+                "reference": "0e03f452baa01019041beeceadbe607d94d558ee",
                 "shasum": ""
             },
             "require": {
@@ -2394,7 +2394,7 @@
                     "email": "hitesh@singsys.com"
                 }
             ],
-            "time": "2019-10-15T18:41:35+00:00"
+            "time": "2019-10-21T10:06:35+00:00"
         },
         {
             "name": "spatie/dropbox-api",
