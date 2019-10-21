@@ -111,10 +111,10 @@ class SendPushNotificationJob implements ShouldQueue
 
         $option = $optionBuilder->build();
 
-        try {
-            FCM::sendTo($tokens, $option, $notification_payload, $data_payload);
-        } catch (\Exception $e) {
-            \Log::info($e->getMessage());
-        }
+        // try {
+        FCM::sendTo($tokens, $option, $notification_payload, $data_payload);
+        // } catch (\Exception $e) {
+        //     \Log::info($e->getMessage());
+        // }
     }
 }
