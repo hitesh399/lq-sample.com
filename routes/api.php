@@ -80,6 +80,14 @@ Route::patch(
 Route::get(
     'device/role/{id}/switch', 'DeviceController@switchRole'
 )->name('device-role-switch');
+Route::put(
+    'my-device',
+    'DeviceController@update'
+)->name('my-device.update');
+Route::get(
+    'my-device',
+    'DeviceController@index'
+)->name('device.index');
 
 Route::apiResource(
     'notification-template',
@@ -171,3 +179,4 @@ Route::post(
     'admin/{id}/change-status',
     'User\AdminController@userChangeStatus'
 )->name('admin.change-status');
+Route::post('socket/join', 'SocketController@join');

@@ -27,6 +27,22 @@ class DeviceController extends Controller
             ->response();
     }
 
+    public function update(Request $request)
+    {
+        $request->device()->update(
+            [
+                'name' => $request->name,
+                'info' => [
+                    'version' => $request->version,
+                    'platform' => $request->platform,
+                ],
+            ]
+        );
+
+        return $this->setData($request->device())
+            ->response();
+    }
+
     /**
      * To Remove the user from device.
      *

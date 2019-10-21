@@ -116,6 +116,9 @@ class AdminController extends Controller
         );
 
         $user->roles()->sync($request->roles);
+        $user->notify(
+            new \App\Notifications\MyProfileChangedNotification(\Auth::user())
+        );
 
         return $this->setData(['data' => $user])
             ->setMessage('Admin Updated Successfully')->response();

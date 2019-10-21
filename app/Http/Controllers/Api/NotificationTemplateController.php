@@ -49,8 +49,11 @@ class NotificationTemplateController extends Controller
     public function store(Request $request)
     {
         $this->validation($request);
-
-        $template = NotificationTemplate::create($request->all());
+        $data = $request->all();
+        if (empty($data['body'])) {
+            $data['body'] = '';
+        }
+        $template = NotificationTemplate::create($data);
 
         return $this->setData($template)
             ->setMessage('Notification template has been created.')
@@ -84,9 +87,11 @@ class NotificationTemplateController extends Controller
         $this->validation($request, $id);
 
         $template = NotificationTemplate::findOrFail($id);
-        $template->update(
-            $request->all()
-        );
+        $data = $request->all();
+        if (empty($data['body'])) {
+            $data['body'] = '';
+        }
+        $template->update($data);
 
         \Cache::forget('notification_template.'.$template->name);
 
@@ -137,8 +142,8 @@ class NotificationTemplateController extends Controller
             [
                 'name' => ['required', 'unique:notification_templates,name,'.$id],
                 'subject' => ['required'],
-                'body' => ['required_if:type,sms,email,push'],
-                'type' => ['required', Rule::in('sms', 'email', 'database', 'push')],
+                'body' => ['required_if:type,sms,email'],
+                'type' => ['required', Rule::in('sms', 'email', 'database', 'push_notification')],
                 'options.variables' => ['required', 'array'],
             ]
         );
