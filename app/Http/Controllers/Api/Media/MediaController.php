@@ -39,7 +39,7 @@ class MediaController extends Controller
     {
         $media_token = MediaToken::where('token', $request->token)->first();
         $uploader = new MediaUploader($request->file, $media_token->path);
-        $media = $uploader->storeInDB();
+        $media = $uploader->storeInDB($request->id);
 
         return $this->setData(
             [
@@ -71,11 +71,11 @@ class MediaController extends Controller
 
         if (!\Storage::exists($media->path)) {
             abort(404);
-        } else {
-            return \Storage::download(
-                $media->path, $media->info['original_name'], $headers
-            );
         }
+
+        return \Storage::download(
+            $media->path, $media->info['original_name'], $headers
+        );
     }
 
     /**

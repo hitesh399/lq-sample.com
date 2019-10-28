@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('test', function () {
+    return Excel::download(new \App\Exports\PermissionDataExport(), 'permission.xlsx');
+});

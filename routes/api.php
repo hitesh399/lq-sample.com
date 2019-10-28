@@ -180,3 +180,20 @@ Route::post(
     'User\AdminController@userChangeStatus'
 )->name('admin.change-status');
 Route::post('socket/join', 'SocketController@join');
+
+/*
+ * User Addresss
+ */
+
+Route::apiResource('user-address', 'Address\UserAddressController')->name(
+    'user-address', null
+);
+Route::apiResource('country', 'CountryController')->name(
+    'country', null
+);
+Route::apiResource('region', 'RegionController')->name(
+    'region', null
+);
+Route::apiResource('city', 'CityController')->name(
+    'city', null
+);

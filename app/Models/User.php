@@ -89,7 +89,7 @@ class User extends Authenticatable
         return $this->morphOneMedia(
             \Config::get('lq.media_model_instance'),
             'mediable',
-            'image',
+            'profile_image',
             __FUNCTION__
         );
     }
@@ -112,5 +112,15 @@ class User extends Authenticatable
     public function notifications()
     {
         return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get Addresses.
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function addresses()
+    {
+        return $this->belongsToMany(UserAddress:: class);
     }
 }
