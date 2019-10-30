@@ -64,6 +64,7 @@ return [
         'dropbox' => [
             'driver' => 'dropbox',
             'authorizationToken' => env('DROPBOX_TOKEN'),
+            'save_public_url' => true,
         ],
     ],
 ];
