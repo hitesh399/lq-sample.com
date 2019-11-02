@@ -36,7 +36,7 @@ class MediaTokenController extends Controller
             [
                 'file_name' => $request->name,
                 'file_size' => $request->size,
-                'path' => $request->path ? $request->path : 'uploads',
+                'path' => $request->path ? $request->path : '',
                 'token' => Str::random(200),
                 'device_id' => $request->device()->id,
                 'client_id' => $request->client()->id,

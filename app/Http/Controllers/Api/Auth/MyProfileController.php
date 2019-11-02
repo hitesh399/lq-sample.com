@@ -152,7 +152,7 @@ class MyProfileController extends Controller
             ]
         );
         $user = Auth::user();
-        $user->profileImage()->addMedia($request->profileImage, 'profile_image');
+        $user->profileImage()->addMedia($request->profileImage, null);
 
         return $this->setData(
             [

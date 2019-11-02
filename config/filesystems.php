@@ -66,5 +66,20 @@ return [
             'authorizationToken' => env('DROPBOX_TOKEN'),
             'save_public_url' => true,
         ],
+        'google' => [
+            'driver' => 'google',
+            'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
+            'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
+            'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+            'folderId' => env('GOOGLE_DRIVE_FOLDER_ID'),
+            'save_public_url' => true,
+            'makePath' => function ($url, $path) {
+                parse_str($url, $_arr);
+                $_arr = array_values($_arr);
+
+                return isset($_arr[0]) && $_arr[0] ? $_arr[0] : $path;
+            },
+            // 'teamDriveId' => env('GOOGLE_DRIVE_TEAM_DRIVE_ID'),
+        ],
     ],
 ];
