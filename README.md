@@ -10,9 +10,9 @@
 - composer require singsys/laravel-quick dev-master
 - lq-server-cli (use —overwrite to replace the files)
 - cp .env .env.production (update credentials like database, session and more) 
-- composer require spatie/flysystem-dropbox
 - composer require tucker-eric/eloquentfilter
-- composer require nao-pon/flysystem-google-drive
+- composer require spatie/flysystem-dropbox (install if you want to use dropbox to store files)
+- composer require nao-pon/flysystem-google-drive (install if you want to use google drive to store files)
 - php artisan vendor:publish --tag=passport-migrations
 - php artisan lq-make:migration
 - php artisan migrate
