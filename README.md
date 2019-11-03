@@ -19,7 +19,7 @@
 - php artisan lq:install
 - php artisan db:seed
 
-**give read write permission to storage folder**
+**Give read write permission to storage folder**
 
 **_Now Setup is completed, use php artisan lq:client to get client id_**
 
