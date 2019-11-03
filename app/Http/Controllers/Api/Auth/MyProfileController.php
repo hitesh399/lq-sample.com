@@ -191,7 +191,7 @@ class MyProfileController extends Controller
          */
         $request->device()->users()->syncWithoutDetaching(
             [
-                $request->user()->id => ['active' => 'No'],
+                $request->device()->id => ['active' => 'No'],
             ]
         );
 
