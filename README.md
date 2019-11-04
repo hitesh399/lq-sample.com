@@ -1,4 +1,4 @@
-# Follow the following to steup a start kit with Laravel and vueJs
+# Follow the following step to setup a start kit with Laravel and vueJs
 
 ###### Setup Laravel
 - npm install lq-server-cli --global
